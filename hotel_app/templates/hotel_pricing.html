@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel Pricing Calculator</title>
+    <style>
+        /* Add your CSS styling here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        .container {
+            width: 300px;
+            margin: auto;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hotel Pricing Calculator</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            <label for="base_price">Base Price ($):</label>
+            <input type="number" id="base_price" name="base_price" required step="any">
+
+            <label for="length_of_stay">Length of Stay (days):</label>
+            <input type="number" id="length_of_stay" name="length_of_stay" required>
+
+            <label for="booking_advance">Booking Advance (days):</label>
+            <input type="number" id="booking_advance" name="booking_advance" required>
+
+            <label for="num_persons">Number of Persons:</label>
+            <input type="number" id="num_persons" name="num_persons" required>
+
+            <label for="flexible_cancellation">Flexible Cancellation:</label>
+            <select id="flexible_cancellation" name="flexible_cancellation">
+                <option value="true">Yes</option>
+                <option value="false" selected>No</option>
+            </select>
+
+            <button type="submit">Calculate Price</button>
+        </form>
+    </div>
+</body>
+</html>
