@@ -26,8 +26,16 @@
         <h1>Hotel Pricing Calculator</h1>
         <form action="" method="post">
             {% csrf_token %}
-            <label for="base_price">Base Price ($):</label>
-            <input type="selection" id="base_price" name="base_price" required step="any">
+            <!-- <label for="base_price">Base Price ($):</label>
+            <input type="selection" id="base_price" name="base_price" required step="any"> -->
+
+            <label for="base_price">select Hotel:</label>
+            <select name="base_price">
+        
+                    <option value="243">Hyatt Regency </option>
+                    <option value="180 Light">Skylight hotel</option>
+                
+            </select>
 
             <label for="length_of_stay">Length of Stay (days):</label>
             <input type="number" id="length_of_stay" name="length_of_stay" required>
