@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel Price Calculator</title>
+    <style>
+        /* Add your CSS styling here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        .container {
+            width: 300px;
+            margin: auto;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+</head>
+<body>
+    <h1>Hotel Price Calculator</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="id_check_in">Check-in Date:</label>
+            {{ form.check_in }}
+        </div>
+        <div>
+            <label for="id_check_out">Check-out Date:</label>
+            {{ form.check_out }}
+        </div>
+        <div>
+            <label for="id_booking_advance">Booking Advance (days):</label>
+            {{ form.booking_advance }}
+        </div>
+        <div>
+            <label for="id_num_persons">Number of Persons:</label>
+            {{ form.num_persons }}
+        </div>
+        <div>
+            <label for="id_flexible_cancellation">Flexible Cancellation:</label>
+            {{ form.flexible_cancellation }}
+        </div>
+        <button type="submit">Calculate Price</button>
+    </form>
+
+    {% if total_price %}
+        <h2>Total Price: ${{ total_price }}</h2>
+    {% endif %}
+</body>
+</html>
