@@ -1,8 +1,11 @@
-from django.shortcuts import render
+# hotel_app/views.py
 
 from django.shortcuts import render
 from django.http import HttpResponse
 from math import pow
+import json
+from django.http import JsonResponse
+from django.views.decorators.http import require_http_methods
 
 def calculate_dynamic_price(base_price, length_of_stay, booking_advance, num_persons, flexible_cancellation):
     length_of_stay_factor = 1.1
@@ -12,8 +15,10 @@ def calculate_dynamic_price(base_price, length_of_stay, booking_advance, num_per
 
     dynamic_price = base_price * pow(length_of_stay_factor, length_of_stay) * pow(booking_advance_factor, booking_advance) * pow(num_persons_factor, num_persons) * cancellation_factor
     return dynamic_price
-
+def hotel(request):
+    return render(request, 'hotel_pricing.html')
 def hotel_pricing(request):
+
     if request.method == "POST":
         # Assuming these values are passed from a form in the frontend
         base_price = float(request.POST.get('base_price'))
@@ -24,5 +29,6 @@ def hotel_pricing(request):
 
         price = calculate_dynamic_price(base_price, length_of_stay, booking_advance, num_persons, flexible_cancellation)
         return HttpResponse(f"Calculated Price: ${price:.2f}")
+
 
     return render(request, 'hotel_pricing.html')

@@ -1,6 +1,7 @@
+
 from django.urls import path
-from .views import hotel_pricing
+from .views import hotel_pricing, hotel
 
 urlpatterns = [
-    path('hotel-pricing/', hotel_pricing, name='hotel_pricing'),
+        path('', hotel_pricing, name='hotel_pricing'),
 ]
