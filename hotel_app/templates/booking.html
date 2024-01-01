@@ -30,8 +30,8 @@
     </style>
 </head>
 <body>
-    <h2>Book Your Stay</h2>
     <div class="container">
+        <h2>Book Your Stay</h2>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}

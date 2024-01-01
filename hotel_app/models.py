@@ -5,7 +5,7 @@ class Hotel(models.Model):
     weekday_price = models.FloatField()
     weekend_price = models.FloatField()
     def __str__(self):
-        return(f"{self.name} weekday  price :- {self.weekday_price}  weekends price :- {self.weekend_price}")
+        return(f"{self.name}")
 
 class Booking(models.Model):
     hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE)
@@ -14,7 +14,7 @@ class Booking(models.Model):
     num_persons = models.IntegerField()
     flexible_cancellation = models.BooleanField()
     def __str__(self):
-        return(f"{self.hotel.name} {self.start_date} {self.end_date} {self.num_persons} {self.flexible_cancellation}")
+        return(f"{self.hotel.name}  From {self.start_date} To {self.end_date} number of persons: {self.num_persons}  Flexible cancellation: {self.flexible_cancellation}")
 
     @property
     def total_price(self):

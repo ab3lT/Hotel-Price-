@@ -8,7 +8,7 @@ def booking_view(request):
         if form.is_valid():
             booking = form.save(commit=False)
             price = booking.total_price
-            return render(request, 'booking_result.html', {'price': price})
+            return render(request, 'booking_result.html', {'price': round(price, 2)})
     else:
         form = BookingForm()
     return render(request, 'booking.html', {'form': form})
