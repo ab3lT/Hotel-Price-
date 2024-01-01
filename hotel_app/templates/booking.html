@@ -8,14 +8,36 @@
     <!-- Include jQuery UI -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+      
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        .container {
+            width: 300px;
+            margin: auto;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        h2{
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
     <h2>Book Your Stay</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Check Price</button>
-    </form>
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Check Price</button>
+        </form>
+    </div>
     <script>
         // $(function() {
         //     $("#id_start_date").datepicker({ dateFormat: 'yy-mm-dd' });

@@ -4,11 +4,34 @@
 <html>
 <head>
     <title>Booking Result</title>
-    <!-- Add any additional CSS or JS you need -->
+    <style>
+        /* Add your CSS styling here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        .container {
+            width: 300px;
+            margin: auto;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        h2{
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
-    <h2>Booking Price</h2>
-    <p>The total price for your stay is: <strong>${{ price }}</strong></p>
-    <a href="{% url 'booking_view' %}">Make another booking</a>
-</body>
+    <div class="container">
+
+        <h2>Hotel Booking Price</h2>
+        
+        <p>The total price for your stay is: <strong>${{ price }}</strong></p>
+        <a href="{% url 'booking_view' %}">Make another booking</a>
+    </div>
+    </body>
 </html>
