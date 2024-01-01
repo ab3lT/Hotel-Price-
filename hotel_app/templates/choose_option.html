@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Choose Hotel</title>
+    <style>
+        /* Add your CSS styling here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            width: 50%;
+            align-items: center;
+        }
+        .container {
+            width: 300px;
+            margin: auto;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Choose an Hotel</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="option">Select an option:</label>
+        <select name="option" id="mySelect">
+            <option value="option1">Hayat Regency </option>
+            <option value="option2">Skylight Hotel</option>
+        </select>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#mySelect').change(function() {
+        var selection = $(this).val();
+        $.ajax({
+            url: '/ajax-view-url/',  // URL of the Django view
+            type: 'POST',
+            data: {
+                'selection': selection,
+                'csrfmiddlewaretoken': '{{ csrf_token }}'  // CSRF token
+            },
+            dataType: 'json',
+            success: function(data) {
+                if (data.redirect_url) {
+                    window.location.href = data.redirect_url;  // Redirect
+                }
+            },
+            error: function() {
+                alert('Error occurred');
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>

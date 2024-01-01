@@ -1,0 +1,26 @@
+<!-- booking.html -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hotel Booking</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include jQuery UI -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+    <h2>Book Your Stay</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Check Price</button>
+    </form>
+    <script>
+        // $(function() {
+        //     $("#id_start_date").datepicker({ dateFormat: 'yy-mm-dd' });
+        //     $("#id_end_date").datepicker({ dateFormat: 'yy-mm-dd' });
+        // });
+    </script>
+</body>
+</html>
